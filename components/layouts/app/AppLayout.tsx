@@ -31,18 +31,18 @@ interface Props {
 }
 
 const items: MenuItem[] = [
-  getItem("Option 1", "1", <PieChartOutlined rev={undefined} />),
-  getItem("Option 2", "2", <DesktopOutlined rev={undefined} />),
-  getItem("User", "sub1", <UserOutlined rev={undefined} />, [
+  getItem("Home", "1", <PieChartOutlined rev={undefined} />),
+  getItem("Products", "2", <DesktopOutlined rev={undefined} />),
+  getItem("Orders", "sub1", <FileOutlined rev={undefined} />, [
     getItem("Tom", "3"),
     getItem("Bill", "4"),
     getItem("Alex", "5"),
   ]),
-  getItem("Team", "sub2", <TeamOutlined rev={undefined} />, [
+  getItem("Statistics", "sub2", <TeamOutlined rev={undefined} />, [
     getItem("Team 1", "6"),
     getItem("Team 2", "8"),
   ]),
-  getItem("Files", "9", <FileOutlined rev={undefined} />),
+  getItem("Profile", "9", <UserOutlined rev={undefined} />),
 ];
 
 const AppLayout: React.FC<Props> = ({ children }) => {
