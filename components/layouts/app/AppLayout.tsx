@@ -59,7 +59,8 @@ const AppLayout: React.FC<Props> = ({ children }) => {
         onCollapse={(value) => setCollapsed(value)}
       >
         <div className="demo-logo-vertical" />
-        <Menu
+        <Menu 
+          style={{backgroundColor:"#74620472"}}
           theme="dark"
           defaultSelectedKeys={["1"]}
           mode="inline"

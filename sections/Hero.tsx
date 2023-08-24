@@ -8,21 +8,31 @@ import React from "react";
 // run npm install
 
 //  create the component for the product details
-export const getStaticProps = async() => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+export 
+
+const Hero = ({}) => {
+//hero var is initialized
+//Type structure of items inside the array
+type heroType ={
+  id: number,
+  //name: string,
+  thumbnailUrl: string,
+} 
+//set up the types
+const [hero, setHero] = React.useState<heroType[]>([])
+
+const getStaticProps = async() => {
+  //const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  const res = await fetch('https://jsonplaceholder.typicode.com/photos')
   const data = await res.json();
   const hero = data.slice(0, 3);
   //gets data from the json, runs at build time 
-
-  return{
-    props: {hero: hero}
-    //passed data from aysnc function to the Hero funct
-  }
-}
-
-const Hero = ({hero}) => {
-//hero var is initialized
-
+  setHero(hero)
+}  
+React.useEffect(()=>{
+    getStaticProps()
+  }, [])
+  
   return (
     <div className="mx-auto">
       <Image src={iphone} 
@@ -34,13 +44,19 @@ const Hero = ({hero}) => {
       A curved notched design with a rounded edge and vibrant color.</p>
       <p>One year warranty included and free delivery within Dar-es-salaam</p>
       <h2 className="text-black text-2xl font-bold pt-5 pb-5"> Tshs 2,000,000</h2>
-      {hero && hero.map(hero => (
-        <div key={hero.id}>
+      {hero.map(hero=> {
+        console.log(hero)
+        return(
+        
+        <div className="text-black" key={hero.id}>
+          <h1 className="text-black">{hero.thumbnailUrl}</h1>
+          <img src={hero.thumbnailUrl} alt="image"/>
           <a>
-            <h4>{hero.name}</h4>
+            {/* <h4 >{hero.name}</h4> */}
+            
           </a>
         </div>
-      ))}
+      )})}
       <Button
         className="bg-green-600 text-white px-6 margin-left: 0;"
         onClick={() => console.log("clicked")}
